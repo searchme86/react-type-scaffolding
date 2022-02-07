@@ -6,7 +6,16 @@ function Navbar() {
     <Nav>
       <NavList>
         <NavLi>
-          <Link to="/">홈</Link>
+          <Link to="/home">Home</Link>
+        </NavLi>
+        <NavLi>
+          <Link to="/register">register</Link>
+        </NavLi>
+        <NavLi>
+          <Link to="/detail">detail</Link>
+        </NavLi>
+        <NavLi>
+          <Link to="/login">Login</Link>
         </NavLi>
         {/* <NavLi>
           <Link to="/invoices">Invoices</Link>

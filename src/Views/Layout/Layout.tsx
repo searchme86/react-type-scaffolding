@@ -9,7 +9,7 @@ import {
   HeaderSection,
   HLeftSection,
   HRightSection,
-} from "../Assets/Styles/Layout.style";
+} from "./Layout.style";
 
 function Layout() {
   return (

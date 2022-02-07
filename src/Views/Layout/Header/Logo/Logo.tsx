@@ -11,7 +11,7 @@ import { LogoImg } from "../../../../Core/Config/AssetPath";
 function Logo() {
   return (
     <LogoWrapper>
-      <DivLinkWrapper to="/">
+      <DivLinkWrapper to="/home">
         <ImgWrapper>
           <Img src={LogoImg.info.src} alt={LogoImg.info.alt} />
         </ImgWrapper>

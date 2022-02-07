@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Dim from "../Components/Modal/Dim";
 import Modal from "../Components/Modal/Modal";
-import { PageContentWrapper } from "../Assets/Styles/Layout.style";
+import { PageContentWrapper } from "../Layout/Layout.style";
 
 function Register() {
   const [modalOpen, setModalOpen] = useState(false);
