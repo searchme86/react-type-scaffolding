@@ -12,7 +12,7 @@ import {
   ModalImgWrapper,
   ModalTitle,
   ModalWrapper,
-} from "../../Assets/Styles/Modal.style";
+} from "./Modal.style";
 
 import { useNavigate } from "react-router";
 
