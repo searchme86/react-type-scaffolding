@@ -7,6 +7,7 @@ import Login from "./Views/Pages/Login";
 import Logout from "./Views/Pages/Logout";
 import Dashboard from "./Views/Pages/Dashboard";
 
+
 const Router = () => {
   return (
     <Routes>

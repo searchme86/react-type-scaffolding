@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { RNav, RnLi, RnList } from "./FunctionsBtn.style";
+import { RNav, RnItem, RnLi, RnList } from "./FunctionsBtn.style";
 import useAuth from "../../../../Server/useAuth";
 
 function FunctionsBtn() {
@@ -10,13 +9,13 @@ function FunctionsBtn() {
         <RnList>
           <RnLi>
             {!user ? (
-              <Link to="/login" role="button">
+              <RnItem to="/login" role="button">
                 Login
-              </Link>
+              </RnItem>
             ) : (
-              <Link to="/logout" role="button">
-                Loout
-              </Link>
+              <RnItem to="/logout" role="button">
+                Logout
+              </RnItem>
             )}
           </RnLi>
         </RnList>

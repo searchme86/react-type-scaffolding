@@ -1,4 +1,3 @@
-// import React from "react";
 import { PageContentWrapper } from "../Layout/Layout.style";
 import useAuth from "../../Server/useAuth";
 
