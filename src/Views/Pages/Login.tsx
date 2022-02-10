@@ -1,10 +1,9 @@
 // import React from "react";
 
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "@firebase/auth";
-import { app } from "../../Server/FirebaseConfig";
-import { GoogleLoginButton } from "react-social-login-buttons";
-
-import { PageContentWrapper } from "../Layout/Layout.style";
+import { GoogleAuthProvider, signInWithPopup, getAuth } from '@firebase/auth';
+import { app } from '../../Server/FirebaseConfig';
+import { GoogleLoginButton } from 'react-social-login-buttons';
+import { PageContentWrapper } from '../Layout/Layout.style';
 
 function Login() {
   const auth = getAuth(app);
