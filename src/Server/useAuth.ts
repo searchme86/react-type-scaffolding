@@ -2,6 +2,7 @@ import { getAuth, onAuthStateChanged, User } from '@firebase/auth';
 import { app } from '../Server/FirebaseConfig';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// import axios from 'axios';
 
 export const defaultHeaders: any = {
   'Content-Type': 'application/json',
@@ -18,13 +19,29 @@ const useAuth = () => {
     mounted.current = true;
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       console.log('여기 user는 무엇', user);
+
       if (user) {
         if (mounted.current) setUser(user);
-        const token = await user.getIdToken();
-        defaultHeaders.Authorization = `Bearer ${token}`;
-        console.log('tocken', token);
-        console.log(defaultHeaders);
-        navigate('/home');
+        try {
+          const token = await user.getIdToken();
+          defaultHeaders.Authorization = `Bearer ${token}`;
+
+          // const res = await fetch('/users/me', {
+          //   method: 'GET',
+          //   headers: defaultHeaders,
+          // });
+
+          // const res = await axios.get('/users/me', {
+          //   headers: defaultHeaders,
+          // });
+
+          console.log('tocken', token);
+          console.log(defaultHeaders);
+
+          navigate('/');
+        } catch (e) {
+          console.log(e);
+        }
       } else {
         if (mounted.current) setUser(null);
       }

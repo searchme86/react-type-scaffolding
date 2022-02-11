@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
-import { Nav, NavLi, NavList } from "./Navbar.style";
+import { Link } from 'react-router-dom';
+import { Nav, NavLi, NavList } from './Navbar.style';
 
 function Navbar() {
   return (
     <Nav>
       <NavList>
         <NavLi>
-          <Link to="/home">Home</Link>
+          <Link to="/">Home</Link>
         </NavLi>
         <NavLi>
           <Link to="/dashboard">dashboard</Link>
