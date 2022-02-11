@@ -1,15 +1,15 @@
 // import React from "react";
 
-import { HomeData } from "../../Core/Config/Home";
-import { useNavigate } from "react-router";
+import { HomeData } from '../../Core/Config/Home';
+import { useNavigate } from 'react-router';
 
 import {
   CircleBtn,
   MainCategoryBtn,
   MainSearchBtn,
-} from "../Components/Button.style";
+} from '../Components/Button.style';
 
-import { MainInputWrapper, SearchInput } from "../Components/Input.style";
+import { SearchInput } from '../Components/Input.style';
 import {
   Category,
   CategoryLi,
@@ -19,22 +19,27 @@ import {
   ItemList,
   ItemWrapper,
   SearchBar,
-} from "../Assets/Styles/Home.style";
+} from '../Assets/Styles/Home.style';
 
-import { DivLinkWrapper, Img, ImgWrapper } from "../Components/Picture.style";
+import { DivLinkWrapper, Img, ImgWrapper } from '../Components/Picture.style';
+import { InputWrapper } from '../Components/Input.style';
 
 function Home() {
   let navigate = useNavigate();
   const moveRegister = (): void => {
-    navigate("/register");
+    navigate('/register');
+  };
+
+  const mainStyle = {
+    SearchWidth: 681,
   };
 
   return (
     <>
       <SearchBar>
-        <MainInputWrapper>
+        <InputWrapper inputWithBtn={mainStyle.SearchWidth}>
           <SearchInput />
-        </MainInputWrapper>
+        </InputWrapper>
         <MainSearchBtn>Search</MainSearchBtn>
       </SearchBar>
       <Category>
