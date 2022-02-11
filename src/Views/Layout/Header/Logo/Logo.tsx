@@ -4,9 +4,9 @@ import {
   DivLinkWrapper,
   ImgWrapper,
   Img,
-} from "../../../Components/Picture.style";
-import { LogoWrapper } from "./Logo.style";
-import { LogoImg } from "../../../../Core/Config/AssetPath";
+} from '../../../Components/Picture.style';
+import { LogoWrapper } from './Logo.style';
+import { LogoImg } from '../../../../Core/Config/AssetPath';
 
 function Logo() {
   return (

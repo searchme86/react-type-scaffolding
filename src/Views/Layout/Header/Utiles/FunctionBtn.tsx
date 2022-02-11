@@ -1,18 +1,25 @@
-// import { Link } from "react-router-dom";
-import { ButtonNormal } from "../../../Components/Button.style";
-// import { RNav, RnLi, RnList } from "./FunctionsBtn.style";
+import { RNav, RnItem, RnLi, RnList } from "./FunctionsBtn.style";
+import useAuth from "../../../../Server/useAuth";
 
 function FunctionsBtn() {
+  const { user } = useAuth();
   return (
     <>
-      {/* <RNav>
+      <RNav>
         <RnList>
           <RnLi>
-            <Link to="/home"></Link>
+            {!user ? (
+              <RnItem to="/login" role="button">
+                Login
+              </RnItem>
+            ) : (
+              <RnItem to="/logout" role="button">
+                Logout
+              </RnItem>
+            )}
           </RnLi>
         </RnList>
-      </RNav> */}
-      <ButtonNormal>Log in</ButtonNormal>
+      </RNav>
     </>
   );
 }

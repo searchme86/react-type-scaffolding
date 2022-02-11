@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Dim from "../Components/Modal/Dim";
 import Modal from "../Components/Modal/Modal";
-import { PageContentWrapper } from "../Assets/Styles/Layout.style";
+import { PageContentWrapper } from "../Layout/Layout.style";
+import useAuth from "../../Server/useAuth";
 
 function Register() {
+  const { user } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -36,6 +38,11 @@ function Register() {
           <Modal close={closeModal}>정말 등록을 취소하시겠습니까?</Modal>
         )}
       </div>
+      {user ? (
+        <h1>유저의 이름은 {user.displayName}입니다</h1>
+      ) : (
+        <p>로그인 해주세요!</p>
+      )}
     </PageContentWrapper>
   );
 }
