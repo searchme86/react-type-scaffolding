@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Register } from "../../Core/Config/AssetPath";
+import styled from 'styled-components';
+import { Register } from '../../Core/Config/AssetPath';
 
 export const ButtonCommon = styled.button`
   display: block;
@@ -56,4 +56,14 @@ export const ModalCancel = styled(ButtonModal)`
 export const ModalConfirm = styled(ButtonModal)`
   background: #f5222d;
   color: #fff;
+`;
+
+export const UrlBtn = styled(ButtonCommon)`
+  display: inline-block;
+  vertical-align: top;
+  width: 56px;
+  line-height: 29px;
+  background: #d9d9d9;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 2px;
 `;
