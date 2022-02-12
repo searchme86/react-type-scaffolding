@@ -26,9 +26,9 @@ import {
   FireBtnArea,
 } from '../Assets/Styles/Register.style';
 import { RegisterBtn, UrlBtn } from '../Components/Button.style';
-import Radio from '../Components/RadioGroup/Radio';
+import Radio from '../Components/Radio';
 import Tag from '../Components/Tag/Tag';
-import TextArea from '../Components/RadioGroup/TextArea';
+import TextArea from '../Components/TextArea';
 
 function Register() {
   const { user } = useAuth();
