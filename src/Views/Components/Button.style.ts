@@ -62,8 +62,8 @@ export const UrlBtn = styled(ButtonCommon)`
   display: inline-block;
   vertical-align: top;
   width: 56px;
+  height: 100%;
   line-height: 29px;
   background: #d9d9d9;
-  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
   border-radius: 2px;
 `;
