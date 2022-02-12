@@ -10,22 +10,32 @@ import {
 } from '../Layout/Layout.style';
 import useAuth from '../../Server/useAuth';
 import { TextHidden } from '../Assets/Styles/Common.style';
-import { InputWrapper, VideoInput } from '../Components/Input.style';
+import {
+  InputFull,
+  InputWrapper,
+  TagInput,
+  VideoInput,
+} from '../Components/Input.style';
 import {
   Youtube,
   VideoArea,
   TagGroup,
   VideoText,
   Genre,
+  TagContent,
+  FireBtnArea,
 } from '../Assets/Styles/Register.style';
-import { UrlBtn } from '../Components/Button.style';
+import { RegisterBtn, UrlBtn } from '../Components/Button.style';
 import Radio from '../Components/RadioGroup/Radio';
+import Tag from '../Components/Tag/Tag';
+import TextArea from '../Components/RadioGroup/TextArea';
 
 function Register() {
   const { user } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
 
-  const openModal = () => {
+  const openModal = (event: React.FormEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     setModalOpen(true);
   };
 
@@ -41,7 +51,7 @@ function Register() {
   const RegisterStyle = {
     InputWithBtn: 408,
     InputFull: 100,
-    fromAbove: 30,
+    fromAbove: 10,
     fromRight: 16,
   };
 
@@ -62,34 +72,38 @@ function Register() {
             </InputWrapper>
             <UrlBtn>입력</UrlBtn>
           </Youtube>
-
           <VideoArea />
-
           <Genre>
             <PageSubtitle>장르</PageSubtitle>
+            <Radio />
           </Genre>
-
           <TagGroup>
             <PageSubtitle>태그</PageSubtitle>
-            <Radio />
+            <TagContent>
+              <InputFull inputFull={RegisterStyle.InputFull}>
+                <TagInput />
+              </InputFull>
+              <Tag />
+            </TagContent>
           </TagGroup>
-
           <VideoText>
             <PageSubtitle>음악링크에 대한 소개를 적어주세요</PageSubtitle>
-            <div></div>
+            <TextArea />
           </VideoText>
-
-          <div>
-            <button>취소</button>
-            <button>작성</button>
-          </div>
+          <FireBtnArea>
+            <RegisterBtn onClick={openModal}>취소</RegisterBtn>
+            <RegisterBtn
+              type="submit"
+              bgColor="#10239E"
+              textColor="#fff"
+              onClick={redirect}
+            >
+              작성
+            </RegisterBtn>
+          </FireBtnArea>
         </form>
       </PageContent>
 
-      <div>
-        <button onClick={openModal}>취소</button>
-        <button onClick={redirect}>작성</button>
-      </div>
       <Link to="/">홈으로</Link>
       <div>
         {modalOpen && <Dim />}

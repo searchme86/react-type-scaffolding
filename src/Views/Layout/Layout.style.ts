@@ -36,7 +36,7 @@ export const HRightSection = styled(HeaderCommon)`
 
 export const PageContentWrapper = styled.div`
   width: 480px;
-  margin: 58px auto 0 auto;
+  margin: 30px auto 0 auto;
 `;
 
 export const PageTitle = styled.h1`

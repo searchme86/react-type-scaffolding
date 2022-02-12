@@ -5,4 +5,6 @@ export interface lBoxStyle {
   fromBottome?: number;
   fromLeft?: number;
   fromRight?: number;
+  bgColor?: string;
+  textColor?: string;
 }

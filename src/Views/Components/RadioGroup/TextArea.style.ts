@@ -3,7 +3,6 @@ import Textarea from 'react-textarea-autosize';
 
 export const TextAreaWrapper = styled.div`
   margin-top: 10px;
-  border: 1px solid red;
 `;
 
 export const TextAreaComp = styled(Textarea)`

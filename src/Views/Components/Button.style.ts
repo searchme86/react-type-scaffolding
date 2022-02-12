@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Register } from '../../Core/Config/AssetPath';
+import { lBoxStyle } from '../../Core/Interface/lStyle';
 
 export const ButtonCommon = styled.button`
   display: block;
@@ -66,4 +67,14 @@ export const UrlBtn = styled(ButtonCommon)`
   line-height: 29px;
   background: #d9d9d9;
   border-radius: 2px;
+`;
+
+export const RegisterBtn = styled(ButtonCommon)<lBoxStyle>`
+  display: inline-block;
+  vertical-align: top;
+  width: 58px;
+  height: 32px;
+  margin-right: 10px;
+  color: ${({ textColor }: lBoxStyle) => textColor};
+  background: ${({ bgColor }: lBoxStyle) => bgColor};
 `;

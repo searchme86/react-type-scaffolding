@@ -23,6 +23,7 @@ const useAuth = () => {
       if (user) {
         if (mounted.current) setUser(user);
         try {
+          console.log('user', user);
           const token = await user.getIdToken();
           defaultHeaders.Authorization = `Bearer ${token}`;
 
@@ -30,6 +31,7 @@ const useAuth = () => {
           //   method: 'GET',
           //   headers: defaultHeaders,
           // });
+          // console.log('res', res);
 
           // const res = await axios.get('/users/me', {
           //   headers: defaultHeaders,

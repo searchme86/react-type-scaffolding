@@ -7,7 +7,7 @@ export const Youtube = styled.div`
 
 export const VideoArea = styled.div`
   width: 100%;
-  height: 270px;
+  height: 250px;
   background: #f5f5f5;
   margin: 18px 0 0 0;
 `;
@@ -20,6 +20,19 @@ export const TagGroup = styled.div`
   margin: 20px 0;
 `;
 
+export const TagContent = styled.div`
+  margin-top: 10px;
+`;
+
 export const VideoText = styled.div`
 margin-top;10px;
+`;
+
+export const FireBtnArea = styled.div`
+  margin: 20px 0 0 354px;
+  button {
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `;
