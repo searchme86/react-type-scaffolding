@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { lInputWidth } from '../../Core/Interface/lStyle';
+import { lBoxStyle } from '../../Core/Interface/lStyle';
 
 const CommonInput = styled.input`
   display: block;
@@ -8,8 +8,11 @@ const CommonInput = styled.input`
   padding: 5px 5px 5px 12px;
 `;
 
-export const InputWrapper = styled.div<lInputWidth>`
-  width: ${({ inputWithBtn }: lInputWidth) => inputWithBtn}px;
+export const InputWrapper = styled.div<lBoxStyle>`
+  display: inline-block;
+  vertical-align: top;
+  width: ${({ inputWithBtn }: lBoxStyle) => inputWithBtn}px;
+  margin-right: ${({ fromRight }: lBoxStyle) => fromRight}px;
 `;
 
 export const SearchInput = styled(CommonInput).attrs({
@@ -23,3 +26,5 @@ export const VideoInput = styled(CommonInput).attrs({
 export const TagInput = styled(CommonInput).attrs({
   placeholder: '태그를 입력하세요',
 });
+
+export const ChoiceOne = styled.input``;

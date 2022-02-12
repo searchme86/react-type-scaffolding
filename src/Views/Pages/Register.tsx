@@ -2,12 +2,24 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Dim from '../Components/Modal/Dim';
 import Modal from '../Components/Modal/Modal';
-import { PageContentWrapper } from '../Layout/Layout.style';
+import {
+  PageContentWrapper,
+  PageTitle,
+  PageContent,
+  PageSubtitle,
+} from '../Layout/Layout.style';
 import useAuth from '../../Server/useAuth';
 import { TextHidden } from '../Assets/Styles/Common.style';
 import { InputWrapper, VideoInput } from '../Components/Input.style';
-import { Youtube, VideoArea } from '../Assets/Styles/Register.style';
+import {
+  Youtube,
+  VideoArea,
+  TagGroup,
+  VideoText,
+  Genre,
+} from '../Assets/Styles/Register.style';
 import { UrlBtn } from '../Components/Button.style';
+import Radio from '../Components/RadioGroup/Radio';
 
 function Register() {
   const { user } = useAuth();
@@ -26,68 +38,57 @@ function Register() {
     navigate('/completed');
   };
 
-  // const widdth = 120;
-
   const RegisterStyle = {
     InputWithBtn: 408,
     InputFull: 100,
+    fromAbove: 30,
+    fromRight: 16,
   };
 
   return (
     <PageContentWrapper>
-      <h1>제목을 입력하세요</h1>
-      <div>
+      <PageTitle>제목을 입력하세요 </PageTitle>
+      <PageContent fromAbove={RegisterStyle.fromAbove}>
         <form>
           <Youtube>
-            <fieldset>
-              <TextHidden>
-                <legend>영상주소를 입력하는 공간입니다.</legend>
-              </TextHidden>
-              <InputWrapper inputWithBtn={RegisterStyle.InputWithBtn}>
-                <VideoInput />
-              </InputWrapper>
-              <UrlBtn>입력</UrlBtn>
-              <VideoArea />
-            </fieldset>
+            <TextHidden>
+              <legend>영상주소를 입력하는 공간입니다.</legend>
+            </TextHidden>
+            <InputWrapper
+              inputWithBtn={RegisterStyle.InputWithBtn}
+              fromRight={RegisterStyle.fromRight}
+            >
+              <VideoInput />
+            </InputWrapper>
+            <UrlBtn>입력</UrlBtn>
           </Youtube>
-          <div>
-            <fieldset>
-              <strong>장르</strong>
-              <ul>
-                <li>
-                  <button>LOFI</button>
-                </li>
-                <li>
-                  <button>POP</button>
-                </li>
-                <li>
-                  <button>K-POP</button>
-                </li>
-                <li>
-                  <button>영화음악</button>
-                </li>
-                <li>
-                  <button>재즈음악</button>
-                </li>
-                <li>
-                  <button>기타</button>
-                </li>
-              </ul>
-            </fieldset>
-          </div>
-          <div>
-            <fieldset>
-              <TextHidden>
-                <legend>태그를 입력해주세요</legend>
-              </TextHidden>
-            </fieldset>
-          </div>
+
+          <VideoArea />
+
+          <Genre>
+            <PageSubtitle>장르</PageSubtitle>
+          </Genre>
+
+          <TagGroup>
+            <PageSubtitle>태그</PageSubtitle>
+            <Radio />
+          </TagGroup>
+
+          <VideoText>
+            <PageSubtitle>음악링크에 대한 소개를 적어주세요</PageSubtitle>
+            <div></div>
+          </VideoText>
 
           <div>
-            <button onClick={openModal}>취소</button>
-            <button onClick={redirect}>작성</button>
+            <button>취소</button>
+            <button>작성</button>
           </div>
         </form>
+      </PageContent>
+
+      <div>
+        <button onClick={openModal}>취소</button>
+        <button onClick={redirect}>작성</button>
       </div>
       <Link to="/">홈으로</Link>
       <div>
