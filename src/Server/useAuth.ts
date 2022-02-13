@@ -1,63 +1,78 @@
-import { getAuth, onAuthStateChanged, User } from '@firebase/auth';
-import { app } from '../Server/FirebaseConfig';
-import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
+export const test = () => console.log('helloe');
+// import { getAuth, onAuthStateChanged, User } from '@firebase/auth';
+// import { app } from '../Server/FirebaseConfig';
+// import { useEffect, useRef, useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// // import axios from 'axios';
 
-export const defaultHeaders: any = {
-  'Content-Type': 'application/json',
-  Accept: 'application/json',
-};
+// export const defaultHeaders: any = {
+//   'Content-Type': 'application/json',
+//   Accept: 'application/json',
+// };
 
-const useAuth = () => {
-  const navigate = useNavigate();
-  const auth = getAuth(app);
-  const [user, setUser] = useState<User | null>(null);
-  let mounted = useRef<boolean>(false);
+// const useAuth = () => {
+//   const navigate = useNavigate();
+//   const auth = getAuth(app);
+//   const [user, setUser] = useState<User | null>(null);
+//   let mounted = useRef<boolean>(false);
 
-  useEffect(() => {
-    mounted.current = true;
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      console.log('여기 user는 무엇', user);
+//   useEffect(() => {
+//     mounted.current = true;
+//     const unsubscribe = onAuthStateChanged(auth, async (user) => {
+//       console.log('여기 user는 무엇', user);
 
-      if (user) {
-        if (mounted.current) setUser(user);
-        try {
-          console.log('user', user);
-          const token = await user.getIdToken();
-          defaultHeaders.Authorization = `Bearer ${token}`;
+//       if (user) {
+//         if (mounted.current) setUser(user);
+//         try {
+//           console.log('user', user);
+//           const token = await user.getIdToken();
+//           defaultHeaders.Authorization = `Bearer ${token}`;
 
-          // const res = await fetch('/users/me', {
-          //   method: 'GET',
-          //   headers: defaultHeaders,
-          // });
-          // console.log('res', res);
+// const handleLogin = async (googleData: any) => {
+//     console.log(googleData);
+//     const res = await fetch('/api/google-login', {
+//       method: 'POST',
+//       body: JSON.stringify({
+//         token: googleData.tokenId,
+//       }),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
 
-          // const res = await axios.get('/users/me', {
-          //   headers: defaultHeaders,
-          // });
+//     const data = await res.json();
 
-          console.log('tocken', token);
-          console.log(defaultHeaders);
+//           // const res = await fetch('/users/me', {
+//           //   method: 'GET',
+//           //   headers: defaultHeaders,
+//           // });
+//           // console.log('res', res);
 
-          navigate('/');
-        } catch (e) {
-          console.log(e);
-        }
-      } else {
-        if (mounted.current) setUser(null);
-      }
-    });
-    return () => {
-      mounted.current = false;
-      unsubscribe();
-    };
-  }, [auth, navigate]);
+//           // const res = await axios.get('/users/me', {
+//           //   headers: defaultHeaders,
+//           // });
 
-  return {
-    user,
-    auth,
-  };
-};
+//           console.log('tocken', token);
+//           console.log(defaultHeaders);
 
-export default useAuth;
+//           navigate('/');
+//         } catch (e) {
+//           console.log(e);
+//         }
+//       } else {
+//         if (mounted.current) setUser(null);
+//       }
+//     });
+//     return () => {
+//       mounted.current = false;
+//       unsubscribe();
+//     };
+//   }, [auth, navigate]);
+
+//   return {
+//     user,
+//     auth,
+//   };
+// };
+
+// export default useAuth;

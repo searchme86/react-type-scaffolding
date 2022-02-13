@@ -1,4 +1,5 @@
-import { useState } from 'react';
+// import useAuth from '../../Server/useAuth';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Dim from '../Components/Modal/Dim';
 import Modal from '../Components/Modal/Modal';
@@ -8,7 +9,6 @@ import {
   PageContent,
   PageSubtitle,
 } from '../Layout/Layout.style';
-import useAuth from '../../Server/useAuth';
 import { TextHidden } from '../Assets/Styles/Common.style';
 import {
   InputFull,
@@ -31,7 +31,18 @@ import Tag from '../Components/Tag/Tag';
 import TextArea from '../Components/TextArea';
 
 function Register() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token');
+    if (authToken) {
+      navigate('/');
+    }
+
+    if (!authToken) {
+      navigate('/test');
+    }
+  });
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = (event: React.FormEvent<HTMLButtonElement>) => {
@@ -111,11 +122,11 @@ function Register() {
           <Modal close={closeModal}>정말 등록을 취소하시겠습니까?</Modal>
         )}
       </div>
-      {user ? (
+      {/* {user ? (
         <h1>유저의 이름은 {user.displayName}입니다</h1>
       ) : (
         <p>로그인 해주세요!</p>
-      )}
+      )} */}
     </PageContentWrapper>
   );
 }

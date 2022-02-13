@@ -1,11 +1,11 @@
-import { RNav, RnItem, RnLi, RnList } from "./FunctionsBtn.style";
-import useAuth from "../../../../Server/useAuth";
+import { RNav, RnItem, RnLi, RnList } from './FunctionsBtn.style';
+// import useAuth from "../../../../Server/useAuth";
 
 function FunctionsBtn() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   return (
     <>
-      <RNav>
+      {/* <RNav>
         <RnList>
           <RnLi>
             {!user ? (
@@ -19,7 +19,7 @@ function FunctionsBtn() {
             )}
           </RnLi>
         </RnList>
-      </RNav>
+      </RNav> */}
     </>
   );
 }
