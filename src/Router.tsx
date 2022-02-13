@@ -51,10 +51,7 @@ const Router = () => {
     const unsubscribe = onAuthStateChanged(auth, async (userAuth) => {
       if (userAuth) {
         console.log('확인된 유저', userAuth);
-        const user = {
-          uid: userAuth.uid,
-          email: userAuth.email!,
-        };
+
         setUser(user);
       } else {
         setUser(null);
