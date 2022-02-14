@@ -1,11 +1,13 @@
 import { RNav, RnItem, RnLi, RnList } from './FunctionsBtn.style';
-// import useAuth from "../../../../Server/useAuth";
+import { useContext } from 'react';
+import { UserContext } from '../../../../Server/UseAuth';
 
 function FunctionsBtn() {
-  // const { user } = useAuth();
+  const { user } = useContext(UserContext);
+  console.log('뾰로롱~', user);
   return (
     <>
-      {/* <RNav>
+      <RNav>
         <RnList>
           <RnLi>
             {!user ? (
@@ -19,7 +21,7 @@ function FunctionsBtn() {
             )}
           </RnLi>
         </RnList>
-      </RNav> */}
+      </RNav>
     </>
   );
 }

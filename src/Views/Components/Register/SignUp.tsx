@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth } from '@firebase/auth';
 import { app } from '../../../Server/FirebaseConfig';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
-import { useAuth } from '../../../Server/useAuth';
+// import { useAuth } from '../../../Server/useAuth';
 
 const SignUp = () => {
   const auth = getAuth(app);
@@ -37,7 +37,7 @@ const SignUp = () => {
     setLoading(false);
   };
 
-  console.log(useAuth);
+  // console.log(useAuth);
 
   return (
     <>

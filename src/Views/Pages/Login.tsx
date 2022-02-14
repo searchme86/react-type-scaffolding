@@ -18,6 +18,8 @@ import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const hours = new Date().getHours();
+  const muninutes = new Date().getMinutes();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ function Login() {
   const provider = new GoogleAuthProvider();
   const getResult = async () => {
     const result = await signInWithPopup(auth, provider);
-    console.log(result);
+    console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, result);
   };
 
   // signInWithEmailAndPassword(auth, email, password)
