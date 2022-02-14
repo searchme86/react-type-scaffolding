@@ -1,6 +1,6 @@
 import { getAuth, onAuthStateChanged, User } from '@firebase/auth';
 import { app } from '../Server/FirebaseConfig';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const defaultHeaders: any = {
@@ -9,47 +9,46 @@ export const defaultHeaders: any = {
 };
 
 const useAuth = () => {
-  const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
   const auth = getAuth(app);
-  let mounted = useRef<boolean>(false);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    mounted.current = true;
-
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      console.log(user);
-      if (user) {
-        if (mounted.current) setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
         try {
-          const token = await user.getIdToken();
+          const token = await firebaseUser.getIdToken();
           defaultHeaders.Authorization = `Bearer ${token}`;
 
-          // const res = await fetch('/users/me', {
-          //   method: 'GET',
-          //   headers: defaultHeaders,
-          // });
+          const res = await fetch('/users/me', {
+            method: 'GET',
+            headers: defaultHeaders,
+          });
 
-          // const res = await axios.get('/users/me', {
-          //   headers: defaultHeaders,
-          // });
+          if (res.status === 200) {
+            const user = await res.json();
+            setUser(user);
+            navigate('/home');
+          }
+
+          if(res.status=== 404){
+            method:'POST',
+            headers:defaultHeaders
+
+          }
 
           console.log('tocken', token);
-          console.log(defaultHeaders);
-
-          navigate('/home');
+          console.log('defaultHeaders', defaultHeaders);
         } catch (e) {
-          console.log(e);
+          console.log('Error is found', e);
         }
       } else {
-        if (mounted.current) setUser(null);
+        delete defaultHeaders.Authorizations;
+        setUser(null);
       }
     });
-    return () => {
-      mounted.current = false;
-      unsubscribe();
-    };
-  }, [auth, navigate]);
+    unsubscribe();
+  }, []);
 
   return {
     user,
