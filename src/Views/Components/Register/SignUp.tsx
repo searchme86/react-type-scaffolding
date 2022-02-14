@@ -1,13 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import { createUserWithEmailAndPassword, getAuth } from '@firebase/auth';
 import { app } from '../../../Server/FirebaseConfig';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
-// import { useAuth } from '../../../Server/useAuth';
+import { UserContext } from '../../../Server/UseAuth';
 
 const SignUp = () => {
   const auth = getAuth(app);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const { user } = useContext(UserContext);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfirmRef = useRef<HTMLInputElement>(null);
@@ -44,6 +45,7 @@ const SignUp = () => {
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign-up</h2>
+          {JSON.stringify(user)}
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">

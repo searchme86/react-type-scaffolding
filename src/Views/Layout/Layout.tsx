@@ -29,12 +29,12 @@ function Layout() {
             </Content>
           </Header>
         </HeaderSection>
+        <main>
+          <Content>
+            <Outlet />
+          </Content>
+        </main>
       </UseAuth>
-      <main>
-        <Content>
-          <Outlet />
-        </Content>
-      </main>
     </>
   );
 }
