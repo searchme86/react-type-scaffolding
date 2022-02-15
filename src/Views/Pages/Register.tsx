@@ -1,6 +1,7 @@
 // import useAuth from '../../Server/useAuth';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+// import { UserContext } from '../../Server/UseAuth';
 import Dim from '../Components/Modal/Dim';
 import Modal from '../Components/Modal/Modal';
 import {
@@ -31,7 +32,7 @@ import Tag from '../Components/Tag/Tag';
 import TextArea from '../Components/TextArea';
 
 function Register() {
-  // const { user } = useAuth();
+  // const { user } = useContext(UserContext);
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token');
     if (authToken) {
@@ -68,6 +69,7 @@ function Register() {
 
   return (
     <PageContentWrapper>
+      {/* {user && <h1>로그인되면 ㅇ</h1>} */}
       <PageTitle>제목을 입력하세요 </PageTitle>
       <PageContent fromAbove={RegisterStyle.fromAbove}>
         <form>

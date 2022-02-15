@@ -11,9 +11,7 @@
     "module": "CommonJS",
     "lib": ["dom", "dom.iterable", "esnext"],
     "declaration": true,
-
     "noUnusedLocals": false,
-
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,

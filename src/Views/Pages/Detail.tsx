@@ -1,6 +1,4 @@
-// import React from "react";
-
-import { PageContentWrapper } from "../Layout/Layout.style";
+import { PageContentWrapper } from '../Layout/Layout.style';
 
 function Detail() {
   return (

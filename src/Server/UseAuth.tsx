@@ -36,7 +36,7 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
           // if (res.status === 200) {
           //   const user = await res.json();
           //   setUser(user);
-          //   navigate('/home');
+          // navigate('/');
           // }
           console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, token);
           console.log('defaultHeaders', defaultHeaders);

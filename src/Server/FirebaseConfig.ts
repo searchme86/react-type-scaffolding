@@ -1,5 +1,4 @@
-// import { FirebaseApp, getApps, initializeApp } from "firebase/app";
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 
 interface lFire {
   [key: string]: string | undefined;
@@ -16,5 +15,4 @@ const firebaseConfig: lFire = {
 
 const app = initializeApp(firebaseConfig);
 
-// export default app;
 export { app };
