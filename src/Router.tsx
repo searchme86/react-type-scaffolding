@@ -15,6 +15,7 @@ import Register from './Views/Pages/Register';
 import Login from './Views/Pages/Login';
 import Logout from './Views/Pages/Logout';
 import Dashboard from './Views/Pages/Dashboard';
+import PrivateRoute from './Views/Components/PrivateRoute';
 // import { onAuthStateChanged, User } from '@firebase/auth';
 
 const Router = () => {
@@ -66,7 +67,14 @@ const Router = () => {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/register"
+          element={
+            <PrivateRoute>
+              <Register />
+            </PrivateRoute>
+          }
+        />
         <Route path="/detail" element={<Detail />}>
           <Route path=":itemIdx" element={<Detail />} />
         </Route>

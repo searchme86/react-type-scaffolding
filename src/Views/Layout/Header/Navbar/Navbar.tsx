@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Nav, NavLi, NavList } from './Navbar.style';
+import { useContext } from 'react';
+import { UserContext } from '../../../../Server/UseAuth';
 
 function Navbar() {
+  const { user } = useContext(UserContext);
   return (
     <Nav>
       <NavList>
