@@ -6,13 +6,23 @@ import Register from './Views/Pages/Register';
 import Login from './Views/Pages/Login';
 import Logout from './Views/Pages/Logout';
 import Dashboard from './Views/Pages/Dashboard';
+import PrivateRoute from './Views/Components/PrivateRoute';
 
 const Router = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="/register" element={<Register />} />
+
+        <Route
+          path="/register"
+          element={
+            <PrivateRoute>
+              <Register />
+            </PrivateRoute>
+          }
+        />
         <Route path="/detail" element={<Detail />}>
           <Route path=":itemIdx" element={<Detail />} />
         </Route>
