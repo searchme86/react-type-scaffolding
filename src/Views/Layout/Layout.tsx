@@ -1,7 +1,8 @@
-import { Outlet } from "react-router";
-import Logo from "./Header/Logo/Logo";
-import Navbar from "./Header/Navbar/Navbar";
-import FunctionsBtn from "./Header/Utiles/FunctionBtn";
+import { Outlet } from 'react-router';
+import UseAuth from '../../Server/UseAuth';
+import Logo from './Header/Logo/Logo';
+import Navbar from './Header/Navbar/Navbar';
+import FunctionsBtn from './Header/Utiles/FunctionBtn';
 
 import {
   Content,
@@ -9,29 +10,31 @@ import {
   HeaderSection,
   HLeftSection,
   HRightSection,
-} from "./Layout.style";
+} from './Layout.style';
 
 function Layout() {
   return (
     <>
-      <HeaderSection>
-        <Header>
+      <UseAuth>
+        <HeaderSection>
+          <Header>
+            <Content>
+              <HLeftSection>
+                <Logo />
+                <Navbar />
+              </HLeftSection>
+              <HRightSection>
+                <FunctionsBtn />
+              </HRightSection>
+            </Content>
+          </Header>
+        </HeaderSection>
+        <main>
           <Content>
-            <HLeftSection>
-              <Logo />
-              <Navbar />
-            </HLeftSection>
-            <HRightSection>
-              <FunctionsBtn />
-            </HRightSection>
+            <Outlet />
           </Content>
-        </Header>
-      </HeaderSection>
-      <main>
-        <Content>
-          <Outlet />
-        </Content>
-      </main>
+        </main>
+      </UseAuth>
     </>
   );
 }
