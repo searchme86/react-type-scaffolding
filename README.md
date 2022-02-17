@@ -1,6 +1,6 @@
 # React-typescript Playground
 
-### branch,Main()
+### branch,Main
 
 You can download a default of React-"Typescript" App with features below
 
