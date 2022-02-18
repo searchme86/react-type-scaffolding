@@ -1,6 +1,6 @@
 // import useAuth from '../../Server/useAuth';
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 // import { UserContext } from '../../Server/UseAuth';
 import Dim from '../Components/Modal/Dim';
 import Modal from '../Components/Modal/Modal';
@@ -30,19 +30,20 @@ import { RegisterBtn, UrlBtn } from '../Components/Button.style';
 import Radio from '../Components/Radio';
 import Tag from '../Components/Tag/Tag';
 import TextArea from '../Components/TextArea';
+import HolderTag from '../Components/NewTag/HolderTag';
 
 function Register() {
   // const { user } = useContext(UserContext);
-  useEffect(() => {
-    let authToken = sessionStorage.getItem('Auth Token');
-    if (authToken) {
-      navigate('/');
-    }
+  // useEffect(() => {
+  //   let authToken = sessionStorage.getItem('Auth Token');
+  //   if (authToken) {
+  //     navigate('/');
+  //   }
 
-    if (!authToken) {
-      navigate('/test');
-    }
-  });
+  //   if (!authToken) {
+  //     navigate('/test');
+  //   }
+  // });
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -55,10 +56,10 @@ function Register() {
     setModalOpen(false);
   };
 
-  const navigate = useNavigate();
-  const redirect = () => {
-    navigate('/completed');
-  };
+  // const navigate = useNavigate();
+  // const redirect = () => {
+  //   navigate('/completed');
+  // };
 
   const RegisterStyle = {
     InputWithBtn: 408,
@@ -98,7 +99,11 @@ function Register() {
               </InputFull>
               <Tag />
             </TagContent>
+            <hr />
+            <HolderTag />
+            <hr />
           </TagGroup>
+
           <VideoText>
             <PageSubtitle>음악링크에 대한 소개를 적어주세요</PageSubtitle>
             <TextArea />
@@ -109,7 +114,7 @@ function Register() {
               type="submit"
               bgColor="#10239E"
               textColor="#fff"
-              onClick={redirect}
+              // onClick={redirect}
             >
               작성
             </RegisterBtn>
@@ -117,7 +122,7 @@ function Register() {
         </form>
       </PageContent>
 
-      <Link to="/">홈으로</Link>
+      {/* <Link to="/">홈으로</Link> */}
       <div>
         {modalOpen && <Dim />}
         {modalOpen && (
