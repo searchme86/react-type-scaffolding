@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InputTag from './InputTag';
 
 function HolderTag() {
-  const [tags, setTags] = useState(['javascript', 'web dev']);
+  const [tags, setTags] = useState([]);
 
   const onAddTag = (tag: string) => {
     setTags([...tags, tag]);
