@@ -6,6 +6,7 @@ import { AiOutlineCopy } from 'react-icons/ai';
 import { ClipboardBtn, ClipboardWrapper, CopiedText } from './Clipboard.style';
 import { IconContext } from 'react-icons/lib';
 import './ClipboardStyle.css';
+import { useParams } from 'react-router-dom';
 
 interface lTclip {
   copied: boolean;
@@ -13,7 +14,22 @@ interface lTclip {
 }
 
 function ClipboardComp({ copied, onCopy }: lTclip) {
-  const Text = 'https://youtube.dsd.dd!@##13';
+  const param = useParams();
+  const urlNum = param.itemIdx;
+
+  const VideoList = [
+    'https://www.youtube.com/watch?v=Wwx4BXCJnQ8',
+    'https://www.youtube.com/watch?v=CCyFnyMiYEs',
+    'https://www.youtube.com/watch?v=AHRzK-bfROA&list=PL10mMS3nf3TZ6TU14qboJ5VtNwmNH7z27&index=10',
+    'https://www.youtube.com/watch?v=TAfITcsgheI&list=PL10mMS3nf3TZ6TU14qboJ5VtNwmNH7z27',
+    'https://www.youtube.com/watch?v=6aeZ7CYaNUk',
+    'https://www.youtube.com/watch?v=HvRb6kzNVmQ',
+    'https://www.youtube.com/watch?v=HuSvZLvtxms',
+    'https://www.youtube.com/watch?v=J9wXEA5gOnc',
+  ];
+  const nowPlayingUrl = VideoList[Number(urlNum) - 1];
+
+  const Text = nowPlayingUrl;
   const notify = () => {
     toast.info('우후! 링크복사 완료!', {
       icon: '🦁',
