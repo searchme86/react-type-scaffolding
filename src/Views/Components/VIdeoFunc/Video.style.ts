@@ -11,16 +11,11 @@ export const VideoWrapper = styled.div`
   width: 480px;
 `;
 
-export const VideoPlayer = styled.div`
-  border: 1px solid red;
-`;
+export const VideoPlayer = styled.div``;
 
-export const VideoHandle = styled.div`
-  border: 1px solid red;
-`;
+export const VideoHandle = styled.div``;
 
 export const VideoControlBox = styled.div`
-  border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
 `;

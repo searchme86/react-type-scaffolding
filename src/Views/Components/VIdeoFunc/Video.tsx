@@ -20,27 +20,31 @@ import {
 } from './Video.style';
 import { TextHidden } from '../../Assets/Styles/Common.style';
 
-interface lPlayInfo {
-  idx: number;
-  url: string;
+interface lVideoProps {
+  playNum: string;
 }
 
-function Video() {
+function Video({ playNum }: lVideoProps) {
+  const VideoList = [
+    'https://www.youtube.com/watch?v=Wwx4BXCJnQ8',
+    'https://www.youtube.com/watch?v=CCyFnyMiYEs',
+    'https://www.youtube.com/watch?v=AHRzK-bfROA&list=PL10mMS3nf3TZ6TU14qboJ5VtNwmNH7z27&index=10',
+    'https://www.youtube.com/watch?v=TAfITcsgheI&list=PL10mMS3nf3TZ6TU14qboJ5VtNwmNH7z27',
+    'https://www.youtube.com/watch?v=6aeZ7CYaNUk',
+    'https://www.youtube.com/watch?v=HvRb6kzNVmQ',
+    'https://www.youtube.com/watch?v=HuSvZLvtxms',
+    'https://www.youtube.com/watch?v=J9wXEA5gOnc',
+  ];
+  const nowPlayingUrl = VideoList[Number(playNum) - 1];
   const playerSize = {
     wd: '480px',
     ht: '400px',
   };
-
-  const playlist = [
-    { idx: 0, url: 'https://www.youtube.com/watch?v=Rq5SEhs9lws' },
-  ];
-
   const toggleControl = {
     label: '컨트롤바',
     labelFor: 'label-control',
     optionsLabels: ['적용', '미적용'],
   };
-
   const toggleLoop = {
     label: '반복재생',
     labelFor: 'label-Loop',
@@ -52,18 +56,17 @@ function Video() {
   const [play, setPlay] = useState(false);
   const [loop, setLoop] = useState(false);
   const [control, setControl] = useState(false);
-  const [playIndex, setPlayIndex] = useState(0);
 
   const ref = useRef(null);
   const ToggleLoopRef = useRef<HTMLInputElement>(null);
   const ToggleControlRef = useRef<HTMLInputElement>(null);
 
-  const getPlayData = (playData: lPlayInfo[]) => {
-    const [{ url }] = playData;
-    setUrl(url);
+  const getPlayData = (playUrl: string) => {
+    setUrl(playUrl);
   };
 
   const handlePlay = () => {
+    getPlayData(nowPlayingUrl);
     setPlay(true);
   };
 
@@ -75,6 +78,7 @@ function Video() {
     setCplayed(0);
     setPlay(false);
     setUrl(null);
+    setTimeout(handlePlay, 100);
   };
 
   const handleLoop = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,17 +86,11 @@ function Video() {
   };
 
   const handleControl = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPlay(false);
+    setUrl(null);
     setControl(e.currentTarget.checked);
     setUrl(null);
-    setCplayed(0);
-  };
-
-  const handleNextVideo = (video: string | any[], playIndex: number) => {
-    if (playIndex === video.length - 1) {
-      setPlayIndex(0);
-    } else {
-      setPlayIndex(playIndex + 1);
-    }
+    setTimeout(handlePlay, 100);
   };
 
   const inputRange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,16 +100,17 @@ function Video() {
   };
 
   useEffect(() => {
-    getPlayData(playlist);
+    getPlayData(nowPlayingUrl);
     return () => {
-      getPlayData(playlist);
+      getPlayData(nowPlayingUrl);
     };
-  }, [playlist, url]);
+  }, [nowPlayingUrl]);
 
-  console.log('cplayed', cplayed * 100);
-  console.log('url', url);
-
-  if (playlist === null) return <p>Loading...</p>;
+  // console.log('cplayed', cplayed * 100);
+  // console.log('현재 control', control);
+  // console.log('url', url);
+  // console.log('video로 넘어온', playNum);
+  // console.log('Video로 들어온 nowPlayingUrl', nowPlayingUrl);
 
   return (
     <>
@@ -128,7 +127,6 @@ function Video() {
             controls={control}
             light={false}
             muted={false}
-            onEnded={() => handleNextVideo(playlist, playIndex)}
           />
         </VideoPlayer>
         <VideoHandle>
