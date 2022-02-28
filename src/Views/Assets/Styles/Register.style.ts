@@ -2,13 +2,27 @@ import styled from 'styled-components';
 
 export const Youtube = styled.div`
   width: 480px;
-  height: 32px;
+  // height: 32px;
 `;
 
 export const VideoArea = styled.div`
   width: 100%;
   background: #f5f5f5;
   margin: 18px 0 0 0;
+`;
+
+export const ValidateText = styled.p`
+  margin: 5px 0 5px 0;
+  color: red;
+  font-weight: bold;
+  font-size: 12px;
+`;
+
+export const IsBlank = styled.p`
+  margin: 5px 0 5px 0;
+  color: red;
+  font-weight: bold;
+  font-size: 12px;
 `;
 
 export const Genre = styled.div`

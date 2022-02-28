@@ -17,6 +17,8 @@ import {
   Genre,
   TagContent,
   FireBtnArea,
+  ValidateText,
+  IsBlank,
 } from '../Assets/Styles/Register.style';
 import { RegisterBtn, UrlBtn } from '../Components/Button.style';
 import { Img, ImgWrapper } from '../Components/Picture.style';
@@ -25,8 +27,40 @@ import TextArea from '../Components/TextArea';
 import HolderTag from '../Components/TagFunc/HolderTag';
 import { useNavigate } from 'react-router';
 import getYouTubeID from 'get-youtube-id';
+import { useForm } from 'react-hook-form';
+import faker from '@faker-js/faker';
+
+interface lForm {
+  YoutubeUrl: string;
+  extraError: string;
+}
 
 function Register() {
+  const idRegex =
+    /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<lForm>({
+    defaultValues: {
+      YoutubeUrl: '',
+    },
+  });
+
+  const onValid = (data: lForm) => {
+    if (!data.YoutubeUrl) {
+      setError(
+        'YoutubeUrl',
+        { message: 'youtube link is empty' },
+        { shouldFocus: true }
+      );
+    }
+    setError('extraError', { message: 'Server offline' });
+  };
+
   const RegisterStyle = {
     InputWithBtn: 408,
     InputFull: 100,
@@ -43,8 +77,11 @@ function Register() {
   }, [navigate]);
 
   const [modalOpen, setModalOpen] = useState(false);
+
   const [videoUrl, setVideoUrl] = useState('');
   const [youtubeId, setYoutubeid] = useState('');
+  const [validate, setValidate] = useState(true);
+  const [isBlank, setIsBlank] = useState(false);
 
   const openModal = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -54,29 +91,50 @@ function Register() {
     setModalOpen(false);
   };
 
-  const handleUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVideoUrl(e.currentTarget.value);
-  };
-  const showThumnail = (e: React.FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const idRegex =
-      /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const handleCheck = () => {
     if (!videoUrl.match(idRegex)) {
-      return;
+      setValidate(false);
+      console.log('validate', validate);
     } else {
       setYoutubeid(getYouTubeID(videoUrl));
+      setValidate(true);
+      console.log('validate', validate);
     }
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      currentTarget: { value },
+    } = e;
+    setVideoUrl(value);
+    handleCheck();
+    console.log('videoUrl', videoUrl);
+    isBlankCheck();
   };
+
+  const handleCheckUrl = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setValidate(true);
+    setIsBlank(false);
+    handleCheck();
+    isBlankCheck();
+  };
+
+  const isBlankCheck = () => {
+    if (videoUrl.trim().length <= 1) {
+      console.log('현재 인풋창은 비어있습니다.');
+    }
+  };
+
+  // const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  // };
 
   return (
     <PageContentWrapper>
       <PageTitle>제목을 입력하세요 </PageTitle>
       <PageContent fromAbove={RegisterStyle.fromAbove}>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onValid)}>
           <Youtube>
             <TextHidden>
               <legend>영상주소를 입력하는 공간입니다.</legend>
@@ -87,13 +145,21 @@ function Register() {
             >
               <VideoInput onChange={handleUrl} value={videoUrl} />
             </InputWrapper>
-            <UrlBtn onClick={showThumnail}>입력</UrlBtn>
+            <UrlBtn onClick={handleCheckUrl}>입력</UrlBtn>
+            {validate ? null : (
+              <ValidateText>유효한 YouTube url이 아닙니다</ValidateText>
+            )}
+            {isBlank ? <IsBlank>입력창이 비어 있습니다</IsBlank> : null}
           </Youtube>
           <VideoArea>
             <ImgWrapper>
-              <Img
-                src={`https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
-              />
+              {validate ? (
+                <Img
+                  src={`https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
+                />
+              ) : (
+                <Img src={faker.image.cats()} />
+              )}
             </ImgWrapper>
           </VideoArea>
           <Genre>
@@ -125,18 +191,12 @@ function Register() {
         </form>
       </PageContent>
 
-      {/* <Link to="/">홈으로</Link> */}
       <div>
         {modalOpen && <Dim />}
         {modalOpen && (
           <Modal close={closeModal}>정말 등록을 취소하시겠습니까?</Modal>
         )}
       </div>
-      {/* {user ? (
-        <h1>유저의 이름은 {user.displayName}입니다</h1>
-      ) : (
-        <p>로그인 해주세요!</p>
-      )} */}
     </PageContentWrapper>
   );
 }
