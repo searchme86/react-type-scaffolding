@@ -27,6 +27,7 @@ const Router = () => {
         <Route path="/detail" element={<Detail />}>
           <Route path=":itemIdx" element={<Detail />} />
         </Route>
+
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/dashboard" element={<Dashboard />} />

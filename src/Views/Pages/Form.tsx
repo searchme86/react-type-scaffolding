@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageContentWrapper } from '../Layout/Layout.style';
 import { useForm } from 'react-hook-form';
-import HolderTag from '../Components/NewTag/HolderTag';
+import HolderTag from '../Components/TagFunc/HolderTag';
 
 function Form() {
   const { register, handleSubmit } = useForm();

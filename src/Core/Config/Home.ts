@@ -7,6 +7,7 @@ export const VideoList = [
     url: 'https://www.youtube.com/watch?v=Wwx4BXCJnQ8',
     title: '역시 성시경 오빠노래는 최고야',
     uploader: '오빠!나야나!!',
+    tag: {},
   },
   {
     id: 2,
