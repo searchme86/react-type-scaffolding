@@ -8,8 +8,12 @@
     "strictNullChecks": false,
     "allowJs": true,
     "checkJs": true,
-    "module": "CommonJS",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "declaration": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
@@ -21,11 +25,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "moduleResolution": "node",
-    "typeRoots": ["src/@types", "@types"],
-    "types": ["node"],
-    "incremental": true
+    "typeRoots": [
+      "src/@types",
+      "@types"
+    ],
+    "types": [
+      "node"
+    ],
+    "incremental": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*", "src/@types", "src/Server/Server.ts"]
+  "include": [
+    "src/**/*",
+    "src/@types",
+    "src/Server/Server.ts"
+  ]
 }
