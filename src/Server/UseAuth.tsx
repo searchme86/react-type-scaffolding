@@ -74,8 +74,8 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
     return () => {
       unsubscribe();
     };
-  }, [auth, navigate]);
-
+    // }, [auth, navigate]);
+  }, []);
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}

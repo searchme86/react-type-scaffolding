@@ -28,7 +28,7 @@ import HolderTag from '../Components/TagFunc/HolderTag';
 import { useNavigate } from 'react-router';
 import getYouTubeID from 'get-youtube-id';
 import { useForm } from 'react-hook-form';
-import faker from '@faker-js/faker';
+import { LogIn } from '../../Core/Config/AssetPath';
 
 interface lForm {
   YoutubeUrl: string;
@@ -80,8 +80,12 @@ function Register() {
 
   const [videoUrl, setVideoUrl] = useState('');
   const [youtubeId, setYoutubeid] = useState('');
-  const [validate, setValidate] = useState(true);
+  //isUrl url이 있냐 없냐
+  //isUrl false: 돔이 보임
+  const [isUrl, setIsUrl] = useState(false);
+  //isblank true: 비어있다,
   const [isBlank, setIsBlank] = useState(false);
+  const [src, setSrc] = useState('');
 
   const openModal = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -93,12 +97,12 @@ function Register() {
 
   const handleCheck = () => {
     if (!videoUrl.match(idRegex)) {
-      setValidate(false);
-      console.log('validate', validate);
+      setIsUrl(false);
+      console.log('isUrl', isUrl);
     } else {
       setYoutubeid(getYouTubeID(videoUrl));
-      setValidate(true);
-      console.log('validate', validate);
+      setIsUrl(true);
+      console.log('isUrl', isUrl);
     }
   };
 
@@ -114,7 +118,7 @@ function Register() {
 
   const handleCheckUrl = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setValidate(true);
+    setIsUrl(true);
     setIsBlank(false);
     handleCheck();
     isBlankCheck();
@@ -122,6 +126,7 @@ function Register() {
 
   const isBlankCheck = () => {
     if (videoUrl.trim().length <= 1) {
+      setIsUrl(false);
       console.log('현재 인풋창은 비어있습니다.');
     }
   };
@@ -132,7 +137,7 @@ function Register() {
 
   return (
     <PageContentWrapper>
-      <PageTitle>제목을 입력하세요 </PageTitle>
+      <PageTitle>음악정보를 입력해주세요</PageTitle>
       <PageContent fromAbove={RegisterStyle.fromAbove}>
         <form onSubmit={handleSubmit(onValid)}>
           <Youtube>
@@ -146,19 +151,19 @@ function Register() {
               <VideoInput onChange={handleUrl} value={videoUrl} />
             </InputWrapper>
             <UrlBtn onClick={handleCheckUrl}>입력</UrlBtn>
-            {validate ? null : (
+            {isUrl ? null : (
               <ValidateText>유효한 YouTube url이 아닙니다</ValidateText>
             )}
             {isBlank ? <IsBlank>입력창이 비어 있습니다</IsBlank> : null}
           </Youtube>
           <VideoArea>
             <ImgWrapper>
-              {validate ? (
+              {!isUrl ? (
+                <Img src={LogIn.info.src} alt={LogIn.info.alt} />
+              ) : (
                 <Img
                   src={`https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
                 />
-              ) : (
-                <Img src={faker.image.cats()} />
               )}
             </ImgWrapper>
           </VideoArea>
