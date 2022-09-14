@@ -40,6 +40,9 @@
 ------|------|
 @types | clipboard, faker, import-img, json-server의 type 파일을 저장
 core | props의 interface 파일들을 저장
+server | axios, firebase, auth관련 작업
+store | clipboard 모듈과 같은 프로젝트에서 사용하는 모듈을 저장
+view | 프로젝트의 view 파일
 
 
 
