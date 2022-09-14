@@ -46,7 +46,7 @@ view | 프로젝트의 view 파일, 프로젝트에서 사용하는 커스텀 �
 
 
 ### 🔑 7. package.json
-"@ramonak/react-progress-bar": "^4.4.0",
+    "@ramonak/react-progress-bar": "^4.4.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -89,37 +89,37 @@ view | 프로젝트의 view 파일, 프로젝트에서 사용하는 커스텀 �
     "typed-redux-saga": "^1.3.1",
     "typescript": "^4.5.5",
     "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
+     },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+      },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^6.0.0-alpha.5",
-    "@types/faker": "^6.6.9",
-    "faker": "^5.5.3"
-  },
-  "proxy": "https://codingyo.herokuapp.com/"
+    },
+    "devDependencies": {
+      "@faker-js/faker": "^6.0.0-alpha.5",
+      "@types/faker": "^6.6.9",
+      "faker": "^5.5.3"
+    },
+    "proxy": "https://codingyo.herokuapp.com/"
 
 
 
