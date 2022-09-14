@@ -45,6 +45,82 @@ store | clipboard 모듈과 같은 프로젝트에서 사용하는 모듈을 저
 view | 프로젝트의 view 파일, 프로젝트에서 사용하는 커스텀 모듈을 저장
 
 
+### 🔑 7. package.json
+"@ramonak/react-progress-bar": "^4.4.0",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
+    "@types/react": "^17.0.39",
+    "@types/react-copy-to-clipboard": "^5.0.2",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-query": "^1.2.9",
+    "@types/react-redux": "^7.1.22",
+    "@types/react-router": "^5.1.18",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/react-tag-autocomplete": "^6.1.1",
+    "@types/react-tag-input": "^6.1.3",
+    "@types/styled-components": "^5.1.22",
+    "axios": "^0.25.0",
+    "firebase": "^9.6.6",
+    "get-youtube-id": "^1.0.1",
+    "react": "^17.0.2",
+    "react-copy-to-clipboard": "^5.0.4",
+    "react-dnd": "^14.0.2",
+    "react-dnd-html5-backend": "^7.6.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.26.0",
+    "react-icons": "^4.3.1",
+    "react-player": "^2.9.0",
+    "react-query": "^3.34.14",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "^5.0.0",
+    "react-social-login-buttons": "^3.6.0",
+    "react-tag-autocomplete": "^6.3.0",
+    "react-tag-input": "^6.8.0",
+    "react-textarea-autosize": "^8.3.3",
+    "react-toastify": "^8.2.0",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-saga": "^1.1.3",
+    "redux-ts": "^4.3.0",
+    "styled-components": "^5.3.3",
+    "typed-redux-saga": "^1.3.1",
+    "typescript": "^4.5.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.5",
+    "@types/faker": "^6.6.9",
+    "faker": "^5.5.3"
+  },
+  "proxy": "https://codingyo.herokuapp.com/"
+
 
 
 
