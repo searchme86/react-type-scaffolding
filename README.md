@@ -1,6 +1,6 @@
 # 노동요
 
-### 단체프로젝트 (https://www.youtube.com/watch?v=KIWhaG2H5PI)
+### 단체 프로젝트 (https://www.youtube.com/watch?v=KIWhaG2H5PI)
 ### 백엔드(2명) + 프론트엔드(2명)
 
 <img width="1191" alt="메인" src="https://user-images.githubusercontent.com/47154709/190161226-0342bde0-8350-4890-b391-85e8ac07db75.png">
