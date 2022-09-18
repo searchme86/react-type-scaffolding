@@ -106,12 +106,6 @@ function Video({ playNum }: lVideoProps) {
     };
   }, [nowPlayingUrl]);
 
-  // console.log('cplayed', cplayed * 100);
-  // console.log('현재 control', control);
-  // console.log('url', url);
-  // console.log('video로 넘어온', playNum);
-  // console.log('Video로 들어온 nowPlayingUrl', nowPlayingUrl);
-
   return (
     <>
       <VideoWrapper>
